@@ -1,9 +1,9 @@
 const processFile = require("../middleware/upload");
-const keyfile = require("../englishguru-364016-e47415cbbf54.json")
 const { format } = require("util");
+const path = require("path")
 const { Storage } = require("@google-cloud/storage");
 // Instantiate a storage client with credentials
-const storage = new Storage({ keyFilename: keyfile });
+const storage = new Storage({ keyFilename: path.join(__dirname + '/englishguru-364016-e47415cbbf54.json') });
 const bucket = storage.bucket("backend5");
 const file = require("../model/video")
 exports.uploadImage = async (req, res) => {
@@ -51,7 +51,7 @@ console.log(file);
     blobStream.end(req.file.buffer);
   } catch (err) {
     res.status(500).send({
-      message: `Could not upload the file:  ${err}`,
+      message: `Could not upload the file:${err}`,
     });
   }
 };
