@@ -28,7 +28,7 @@ console.log(file);
     blobStream.on("finish", async (data) => {
       // Create URL for directly file access via HTTP.
       const publicUrl = format(
-        `https://storage.googleapis.com/${bucket.name}/${blob.name}`
+        `https://storage.googleapis.com/download/storage/v1/b/${bucket.name}/${blob.name}`
       );
 
       try {
